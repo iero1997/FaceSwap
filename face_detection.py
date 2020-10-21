@@ -4,11 +4,12 @@ import numpy as np
 
 ## Face detection
 def face_detection(img,upsample_times=1):
+    gray = cv2.cvtColor(src=img, code=cv2.COLOR_BGR2GRAY)
     # Ask the detector to find the bounding boxes of each face. The 1 in the
     # second argument indicates that we should upsample the image 1 time. This
     # will make everything bigger and allow us to detect more faces.
     detector = dlib.get_frontal_face_detector()
-    faces = detector(img, upsample_times)
+    faces = detector(gray, upsample_times)
 
     return faces
 
